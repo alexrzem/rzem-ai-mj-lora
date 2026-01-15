@@ -1,3 +1,4 @@
+mod candle_inference;
 mod claude;
 mod file_ops;
 mod image_utils;
