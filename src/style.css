@@ -67,15 +67,19 @@ h3 {
 }
 
 .p-card {
-  @apply text-gray-900! rounded shadow bg-gray-50;
+  @apply text-gray-900! rounded-lg shadow bg-gray-50;
 }
 
 .p-card-header {
   @apply text-xl font-semibold bg-gray-300 rounded-t;
 }
 
+.p-card-title {
+  @apply px-4 py-4 text-xl font-semibold;
+}
+
 .p-card-body {
-  @apply rounded-b-xl bg-gray-50;
+  @apply p-6 rounded-xl bg-gray-50;
 }
 
 .copy-text {

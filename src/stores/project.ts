@@ -13,7 +13,7 @@ export type Step = 'upload' | 'analysis' | 'batches' | 'export';
 export const useProjectStore = defineStore('project', () => {
   // State
   const imagePaths = ref<string[]>([]);
-  const srefCode = ref();
+  const srefCode = ref('');
   const specification = ref<DatasetSpecification | null>(null);
   const currentStep = ref<Step>('upload');
   const isDirty = ref(false);
@@ -23,7 +23,7 @@ export const useProjectStore = defineStore('project', () => {
 
   // Computed
   const hasImages = computed(() => imagePaths.value.length >= 3);
-  const hasSrefCode = computed(() => srefCode.value > 0);
+  const hasSrefCode = computed(() => srefCode.value.length >= 3);
   const canAnalyze = computed(() => hasImages.value && hasSrefCode.value);
   const hasSpecification = computed(() => specification.value !== null);
 
@@ -45,7 +45,7 @@ export const useProjectStore = defineStore('project', () => {
     isDirty.value = true;
   }
 
-  function setSrefCode(code: number) {
+  function setSrefCode(code: string) {
     srefCode.value = code;
     isDirty.value = true;
   }
@@ -240,7 +240,7 @@ export const useProjectStore = defineStore('project', () => {
 
   function reset() {
     imagePaths.value = [];
-    srefCode.value = null;
+    srefCode.value = '';
     specification.value = null;
     currentStep.value = 'upload';
     isDirty.value = false;

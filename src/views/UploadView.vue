@@ -20,7 +20,7 @@
 
         <div class="flex flex-col gap-2">
           <label class="block font-semibold"> SREF Code </label>
-          <InputNumber v-model="srefCode" :useGrouping="false" fluid placeholder="Enter 10-digit SREF code" />
+          <InputText v-model="srefCode" fluid placeholder="Enter 10-digit SREF code" />
         </div>
 
         <ImageUploader :image-paths="imagePaths" @update:imagePaths="updateImages" @add="addImage" @remove="removeImage" />
@@ -55,7 +55,7 @@ import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import Button from 'primevue/button';
 import Card from 'primevue/card';
-import InputNumber from 'primevue/inputnumber';
+import InputText from 'primevue/inputtext';
 import { ImageUp, WandSparkles } from 'lucide-vue-next';
 import { useProjectStore } from '../stores/project';
 import ImageUploader from '../components/ImageUploader.vue';

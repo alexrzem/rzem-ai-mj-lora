@@ -45,7 +45,7 @@ export interface DatasetSpecification {
 export interface ProjectData {
   images: string[];  // base64 encoded
   imagePaths: string[];  // original file paths
-  srefCode: number;
+  srefCode: string;
   specification: DatasetSpecification | null;
   lastModified: number;
 }
