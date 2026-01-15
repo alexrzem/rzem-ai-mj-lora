@@ -3,6 +3,7 @@ mod claude;
 mod file_ops;
 mod image_utils;
 mod model_manager;
+// TODO: Task 7 - mod offline_analyzer;
 mod settings;
 
 use tauri::command;
