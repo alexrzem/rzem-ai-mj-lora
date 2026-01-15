@@ -30,7 +30,18 @@ anyhow = "1.0"
 dirs = "6.0"
 thiserror = "2.0"
 log = "0.4"
+candle-core = { git = "https://github.com/huggingface/candle.git" }
+candle-nn = { git = "https://github.com/huggingface/candle.git" }
+candle-transformers = { git = "https://github.com/huggingface/candle.git" }
+tokenizers = "0.19"
+image = "0.25"
+sysinfo = "0.30"
 
 [dev-dependencies]
 tempfile = "3.8"
+
+[features]
+default = []
+cuda = ["candle-core/cuda"]
+metal = ["candle-core/metal"]
 
