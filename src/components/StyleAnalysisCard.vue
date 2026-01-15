@@ -1,24 +1,24 @@
 <template>
     <Card>
         <template #content>
-            <div class="flex flex-col gap-4 p-4">
-                <div class="text-xl font-medium">Style Analysis</div>
+            <div class="flex flex-col gap-4">
+                <div class="text-xl font-bold">Style Analysis</div>
                 <div>
-                    <div class="font-medium">Primary Style</div>
+                    <div class="text-lg font-medium">Primary Style</div>
                     <UseClipboard v-slot="{ copy, copied }" :source="analysis.primary_style">
                         <div class="copy-text" @click="copy()">{{ analysis.primary_style }}</div>
                     </UseClipboard>
                 </div>
 
                 <div>
-                    <div class="font-medium">Era Influence</div>
+                    <div class="text-lg font-medium">Era Influence</div>
                     <UseClipboard v-slot="{ copy, copied }" :source="analysis.era_influence">
                         <div class="copy-text" @click="copy()">{{ analysis.era_influence }}</div>
                     </UseClipboard>
                 </div>
 
                 <div>
-                    <div class="font-medium">Color Palette</div>
+                    <div class="text-lg font-medium ">Color Palette</div>
                     <div class="flex flex-wrap gap-2">
                         <Tag v-for="color in analysis.color_palette" :key="color" class="flex items-center gap-1 px-2 bg-gray-100 border rounded-lg shadow">
                             <ImageUp class="w-4 h-4" />
@@ -28,7 +28,7 @@
                 </div>
 
                 <div>
-                    <div class="font-medium">Key Characteristics</div>
+                    <div class="text-lg font-medium">Key Characteristics</div>
                     <div class="grid grid-cols-2 gap-1">
                         <div v-for="char in analysis.key_characteristics" :key="char" class="flex gap-1 text-sm place-items-center">
                             <CircleDot class="w-3 h-3" />

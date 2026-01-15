@@ -4,28 +4,7 @@
         <StyleAnalysisCard :analysis="specification.style_analysis" />
 
         <!-- Training Recommendations -->
-        <div class="p-6 bg-white rounded-lg shadow">
-            <h2 class="mb-4 text-xl font-bold">Training Recommendations</h2>
-            <div class="space-y-4">
-                <div>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Recommended Dataset Size</p>
-                    <p class="text-2xl font-bold text-gray-900 dark:text-white">{{ specification.training_recommendations.recommended_dataset_size }} images</p>
-                </div>
-
-                <div>
-                    <p class="mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Subject Distribution</p>
-                    <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
-                        <div
-                            v-for="(percentage, category) in specification.training_recommendations.optimal_subject_distribution"
-                            :key="category"
-                            class="p-3 rounded bg-gray-50 dark:bg-gray-700">
-                            <p class="text-xs text-gray-600 dark:text-gray-400">{{ category }}</p>
-                            <p class="text-lg font-bold text-gray-900 dark:text-white">{{ percentage }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <TrainingRecommendationsCard :training_recommendations="specification.training_recommendations"/>
 
         <!-- Prompt Guidelines -->
         <div class="p-6 bg-white rounded-lg shadow dark:bg-gray-800">
@@ -86,6 +65,7 @@ import Card from 'primevue/card';
 import { ImageUp } from 'lucide-vue-next';
 import { useProjectStore } from '../stores/project';
 import StyleAnalysisCard from '../components/StyleAnalysisCard.vue';
+import TrainingRecommendationsCard from '../components/TrainingRecommendationsCard.vue';
 
 const store = useProjectStore();
 const router = useRouter();
