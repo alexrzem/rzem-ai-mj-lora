@@ -1,6 +1,17 @@
 use crate::settings::ModelVariant;
 use anyhow::{Context, Result};
+use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
+
+/// Status of a model on the system
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(tag = "status", rename_all = "snake_case")]
+pub enum ModelStatus {
+    NotDownloaded,
+    Downloading { progress_percent: u8 },
+    Ready,
+    Error { message: String },
+}
 
 /// Configuration for a specific Qwen2-VL model variant
 pub struct ModelConfig {
@@ -91,6 +102,36 @@ pub fn get_model_path(variant: ModelVariant, custom_dir: Option<PathBuf>) -> Res
     Ok(cache_dir.join(variant_name))
 }
 
+/// Check the status of a model variant on the system
+pub fn check_model_status(variant: ModelVariant, custom_dir: Option<PathBuf>) -> ModelStatus {
+    let model_path = match get_model_path(variant.clone(), custom_dir) {
+        Ok(path) => path,
+        Err(e) => {
+            return ModelStatus::Error {
+                message: format!("Failed to determine model path: {}", e),
+            }
+        }
+    };
+
+    // Check if model directory exists
+    if !model_path.exists() {
+        return ModelStatus::NotDownloaded;
+    }
+
+    // Check if all required files exist
+    let config = ModelConfig::from_variant(variant);
+    for file in &config.files {
+        let file_path = model_path.join(file);
+        if !file_path.exists() {
+            return ModelStatus::Error {
+                message: format!("Missing required file: {}", file),
+            };
+        }
+    }
+
+    ModelStatus::Ready
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -107,5 +148,17 @@ mod tests {
     fn test_model_path_generation() {
         let path = get_model_path(ModelVariant::Qwen2VL2B, None).unwrap();
         assert!(path.to_string_lossy().contains("qwen2-vl-2b"));
+    }
+
+    #[test]
+    fn test_model_status_not_downloaded() {
+        use tempfile::TempDir;
+
+        // Create a temporary directory that won't contain a model
+        let temp_dir = TempDir::new().unwrap();
+        let custom_dir = Some(temp_dir.path().to_path_buf());
+
+        let status = check_model_status(ModelVariant::Qwen2VL2B, custom_dir);
+        assert_eq!(status, ModelStatus::NotDownloaded);
     }
 }
