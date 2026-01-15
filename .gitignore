@@ -25,3 +25,6 @@ dist-ssr
 *.sw?
 .env
 lora-training-generator.skill
+
+# Git worktrees
+.worktrees
