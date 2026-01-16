@@ -19,19 +19,19 @@ impl Qwen2VLInference {
         }
 
         // Determine model and mmproj file names based on variant
-        // These must match the filenames in model_manager.rs
+        // These MUST match the filenames in model_manager.rs exactly
         let (model_file, mmproj_file) = match variant {
             ModelVariant::Qwen3VL2B => (
-                "Qwen3-VL-2B-Instruct-Q8_0.gguf",
-                "mmproj-Qwen3-VL-2B-Instruct-F16.gguf",
+                "Qwen3VL-2B-Instruct-Q8_0.gguf",
+                "mmproj-Qwen3VL-2B-Instruct-Q8_0.gguf",
             ),
             ModelVariant::Qwen3VL4B => (
-                "Qwen3-VL-4B-Instruct-Q8_0.gguf",
-                "mmproj-Qwen3-VL-4B-Instruct-F16.gguf",
+                "Qwen3VL-4B-Instruct-Q8_0.gguf",
+                "mmproj-Qwen3VL-4B-Instruct-Q8_0.gguf",
             ),
             ModelVariant::Qwen3VL8B => (
-                "Qwen3-VL-8B-Instruct-Q8_0.gguf",
-                "mmproj-Qwen3-VL-8B-Instruct-F16.gguf",
+                "Qwen3VL-8B-Instruct-Q8_0.gguf",
+                "mmproj-Qwen3VL-8B-Instruct-Q8_0.gguf",
             ),
         };
 
