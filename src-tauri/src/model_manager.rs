@@ -45,40 +45,55 @@ impl ModelConfig {
                 // merges.txt, vocab.json, etc.). Update this when implementing real model
                 // loading in Task 7.
                 files: vec![
-                    "model.safetensors".to_string(),
+                    "chat_template.json".to_string(),
                     "config.json".to_string(),
+                    "generation_config.json".to_string(),
+                    "merges.txt".to_string(),
+                    "model-00001-of-00002.safetensors".to_string(),
+                    "model-00002-of-00002.safetensors".to_string(),
+                    "model.safetensors.index.json".to_string(),
+                    "preprocessor_config.json".to_string(),
                     "tokenizer.json".to_string(),
                     "tokenizer_config.json".to_string(),
+                    "vocab.json".to_string(),
                 ],
                 total_size_bytes: 4_500_000_000, // ~4.5 GB
             },
             ModelVariant::Qwen2VL7B => Self {
                 variant,
                 hf_repo: "Qwen/Qwen2-VL-7B-Instruct".to_string(),
-                // TODO: This is a simplified file list for stub implementation.
-                // Real Qwen2-VL models require additional files (preprocessor_config.json,
-                // merges.txt, vocab.json, etc.). Update this when implementing real model
-                // loading in Task 7.
                 files: vec![
-                    "model.safetensors".to_string(),
+                    "chat_template.json".to_string(),
                     "config.json".to_string(),
+                    "generation_config.json".to_string(),
+                    "merges.txt".to_string(),
+                    "model-00001-of-00004.safetensors".to_string(),
+                    "model-00002-of-00004.safetensors".to_string(),
+                    "model-00003-of-00004.safetensors".to_string(),
+                    "model-00004-of-00004.safetensors".to_string(),
+                    "model.safetensors.index.json".to_string(),
+                    "preprocessor_config.json".to_string(),
                     "tokenizer.json".to_string(),
                     "tokenizer_config.json".to_string(),
+                    "vocab.json".to_string(),
                 ],
                 total_size_bytes: 15_000_000_000, // ~15 GB
             },
             ModelVariant::Qwen2VL72B => Self {
                 variant,
                 hf_repo: "Qwen/Qwen2-VL-72B-Instruct".to_string(),
-                // TODO: This is a simplified file list for stub implementation.
-                // Real Qwen2-VL models require additional files (preprocessor_config.json,
-                // merges.txt, vocab.json, etc.). Update this when implementing real model
-                // loading in Task 7.
                 files: vec![
-                    "model.safetensors".to_string(),
+                    "chat_template.json".to_string(),
                     "config.json".to_string(),
+                    "generation_config.json".to_string(),
+                    "merges.txt".to_string(),
+                    // 72B model has many shards - this is a simplified list
+                    // In production, we'd need to dynamically detect shard count
+                    "model.safetensors.index.json".to_string(),
+                    "preprocessor_config.json".to_string(),
                     "tokenizer.json".to_string(),
                     "tokenizer_config.json".to_string(),
+                    "vocab.json".to_string(),
                 ],
                 total_size_bytes: 146_000_000_000, // ~146 GB
             },

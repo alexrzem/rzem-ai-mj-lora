@@ -48,7 +48,11 @@ echo "Development Mode"
 echo "======================================================"
 echo ""
 
+export RUST_LOG=debug
 source .env
+
+env
+
 tauri dev
 
 # This will be reached when the user presses Ctrl+C
