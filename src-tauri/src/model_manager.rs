@@ -179,8 +179,10 @@ pub async fn download_model(
 
     // Run the synchronous download in a blocking task to avoid blocking the async runtime
     tokio::task::spawn_blocking(move || {
-        // Initialize HF Hub API
-        let api = hf_hub::api::sync::Api::new()
+        // Initialize HF Hub API with proper configuration
+        let api = hf_hub::api::sync::ApiBuilder::new()
+            .with_progress(true)
+            .build()
             .map_err(|e| ModelError::DownloadFailed(format!("Failed to initialize HF Hub API: {}", e)))?;
 
         let repo = api.model(config.hf_repo.clone());
