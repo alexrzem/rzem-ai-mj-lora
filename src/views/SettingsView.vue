@@ -305,7 +305,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { invoke } from '@tauri-apps/api/core';
 import { listen, type UnlistenFn } from '@tauri-apps/api/event';
@@ -355,6 +355,18 @@ const modelStatusMessage = computed(() => {
   if (status === 'downloading') return 'Downloading model files...';
   return '';
 });
+
+// Watch for model variant changes and re-check status
+watch(
+  () => localSettings.value?.offline_model_variant,
+  (newVariant, oldVariant) => {
+    // Only check if variant actually changed and we have a value
+    if (newVariant && newVariant !== oldVariant) {
+      console.log('Model variant changed from', oldVariant, 'to', newVariant);
+      checkModelStatus();
+    }
+  }
+);
 
 async function loadSettingsData() {
   isLoading.value = true;
