@@ -33,6 +33,8 @@
           "permissions": [
             "dialog:allow-open",
             "dialog:allow-save",
+            "dialog:allow-message",
+            "dialog:allow-confirm",
             "core:default",
             "core:path:default",
             "core:event:default",
