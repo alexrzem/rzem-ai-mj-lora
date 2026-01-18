@@ -1,0 +1,7 @@
+{
+  "analysis_mode": "Auto",
+  "offline_model_variant": "Qwen3VL2B",
+  "model_cache_dir": "/home/user/.cache/huggingface/hub",
+  "auto_fallback": true,
+  "keep_model_loaded": false
+}

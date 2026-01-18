@@ -101,6 +101,39 @@ This will:
 - Start the Vite development server for the frontend
 - Build and launch the Tauri app with hot-reload
 
+### Developer Mode (UI Development with Mock Data)
+
+For UI development without running the Tauri backend, you can enable developer mode to use mock data:
+
+1. **Set environment variable:**
+   ```bash
+   # Edit .env file
+   VITE_DEV_MODE=true
+   ```
+
+2. **Start development server:**
+   ```bash
+   npm run dev
+   ```
+
+3. **Access the app:**
+   Open http://localhost:5173 in your browser
+
+**What Developer Mode Does:**
+- Bypasses all Tauri backend calls
+- Returns realistic dummy data instantly
+- Allows viewing all pages (Upload, Analysis, Batch Editor, Export)
+- Simulates loading delays for realistic UX testing
+- Logs all mock operations to browser console
+
+**When to Use:**
+- UI development and styling
+- Testing page layouts without backend setup
+- Rapid prototyping of components
+- Working on frontend without Rust/Tauri installation
+
+**Note:** Developer mode uses the web browser version (`npm run dev`) instead of the Tauri desktop app (`npm run tauri dev`). To switch back to real backend, set `VITE_DEV_MODE=false` in `.env`.
+
 ## Building for Production
 
 Build the application:

@@ -24,7 +24,11 @@ tmp/
 *.njsproj
 *.sln
 *.sw?
+# Environment files with secrets
 .env
+.env.local
+.env.development
+.env.production
 lora-training-generator.skill
 
 # Git worktrees

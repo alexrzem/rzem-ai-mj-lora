@@ -1,0 +1,105 @@
+{
+  "images": [],
+  "imagePaths": [
+    "/mock/images/style-ref-1.jpg",
+    "/mock/images/style-ref-2.jpg",
+    "/mock/images/style-ref-3.jpg",
+    "/mock/images/style-ref-4.jpg"
+  ],
+  "srefCode": "1234567890",
+  "specification": {
+    "sref_code": "1234567890",
+    "style_analysis": {
+      "primary_style": "Retro Illustration",
+      "era_influence": "1960s-1970s vintage design",
+      "color_palette": [
+        "#E87461",
+        "#F4A261",
+        "#E9C46A",
+        "#2A9D8F",
+        "#264653"
+      ],
+      "key_characteristics": [
+        "Flat color blocking with minimal gradients",
+        "Strong geometric shapes and simplified forms",
+        "Muted earth tones with occasional bright accents",
+        "Screen-printed aesthetic with visible texture",
+        "High contrast between figure and ground"
+      ],
+      "best_subjects": [
+        "Nature scenes (mountains, forests, sunsets)",
+        "Vintage vehicles (cars, vans, motorcycles)",
+        "Outdoor recreation (camping, hiking)",
+        "Geometric patterns and abstract shapes",
+        "Retro technology and household items"
+      ],
+      "avoid_subjects": [
+        "Modern technology (smartphones, laptops)",
+        "Contemporary fashion and streetwear",
+        "Photorealistic portraits",
+        "Text-heavy compositions",
+        "Complex architectural details"
+      ]
+    },
+    "training_recommendations": {
+      "recommended_dataset_size": 120,
+      "optimal_subject_distribution": {
+        "Nature & Landscapes": 25,
+        "Vehicles & Transportation": 15,
+        "Outdoor Activities": 20,
+        "Geometric & Abstract": 15,
+        "Objects & Still Life": 20,
+        "Animals & Wildlife": 15,
+        "Architecture & Buildings": 10
+      }
+    },
+    "permutation_batches": [
+      {
+        "batch_number": 1,
+        "batch_name": "Mountain Landscapes",
+        "category": "Nature & Landscapes",
+        "image_count": 40,
+        "prompt": "{mountain peak, mountain range, alpine valley, rocky cliff, snow-capped summit} with {at sunrise, at sunset, under cloudy sky, in golden hour, at dusk, in morning mist, under clear sky, during storm} --sref 1234567890",
+        "priority": "high",
+        "notes": "Focus on dramatic lighting conditions to test style consistency"
+      },
+      {
+        "batch_number": 2,
+        "batch_name": "Vintage Vehicles",
+        "category": "Vehicles & Transportation",
+        "image_count": 40,
+        "prompt": "{classic car, vintage van, retro motorcycle, old pickup truck, station wagon} with {parked in forest, on desert road, by the ocean, in mountain setting, at campsite, on country road, in national park, near lake} --sref 1234567890",
+        "priority": "high",
+        "notes": "Vehicles are a strong fit for this retro aesthetic"
+      },
+      {
+        "batch_number": 3,
+        "batch_name": "Camping & Outdoor Life",
+        "category": "Outdoor Activities",
+        "image_count": 40,
+        "prompt": "{tent in wilderness, campfire scene, hiking trail, canoe on lake, backpack on rock, camping gear layout, hammock between trees, fishing by river} with {at dawn, at dusk, in afternoon sun, under starry sky, in morning light} --sref 1234567890",
+        "priority": "high",
+        "notes": "Core theme that aligns perfectly with the style"
+      }
+    ],
+    "prompt_guidelines": {
+      "keep_simple": true,
+      "avoid_style_keywords": [
+        "retro",
+        "vintage",
+        "illustrated",
+        "flat design",
+        "1960s",
+        "1970s",
+        "screen print"
+      ],
+      "recommended_additions": [
+        "Time of day variations (sunrise, sunset, golden hour)",
+        "Weather conditions (cloudy, clear, misty)",
+        "Lighting directions (backlit, side lit, soft light)",
+        "Natural settings (forest, mountain, desert, ocean)"
+      ]
+    }
+  },
+  "lastModified": 1705500000000
+}
